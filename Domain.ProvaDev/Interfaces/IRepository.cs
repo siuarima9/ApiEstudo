@@ -15,6 +15,5 @@ namespace Domain.ProvaDev.Interfaces
         TEntity ObterPorId(TKey id);
         void Atualizar(TEntity obj);
         void Remover(TEntity obj);
-        int SaveChanges();
     }
 }

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Service.WebApi.ProvaDev.Configuration;
 using System.Web.Http;
 
 namespace Service.WebApi.ProvaDev
@@ -10,6 +9,7 @@ namespace Service.WebApi.ProvaDev
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            (config.Services as IServiceCollection).AddAutoMapperSetup(); 
 
             // Web API routes
             config.MapHttpAttributeRoutes();

@@ -14,4 +14,11 @@
     <PackageReference Include="coverlet.collector" Version="1.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Application.ProvaDev\Application.ProvaDev.csproj" />
+    <ProjectReference Include="..\Domain.ProvaDev\Domain.ProvaDev.csproj" />
+    <ProjectReference Include="..\Infra.ProvaDev\Infra.ProvaDev\Infra.ProvaDev.csproj" />
+    <ProjectReference Include="..\Service.WebApi.ProvaDev\Service.WebApi.ProvaDev.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -9,13 +9,6 @@ namespace Application.ProvaDev.AutoMapper
 {
     public class ViewModelToDomainMapping : Profile
     {
-        public static MapperConfiguration RegisterMappings()
-        {
-            return new MapperConfiguration(cfg => {
-                cfg.AddProfile(new DomainToViewModelMapping());
-                cfg.AddProfile(new ViewModelToDomainMapping());
-            });
-        }
         
     }
 }
