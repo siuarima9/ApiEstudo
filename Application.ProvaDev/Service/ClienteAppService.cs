@@ -12,33 +12,57 @@ namespace Application.ProvaDev.Service
     public class ClienteAppService : IClienteAppService
     {
         private readonly IClienteRepository _repository;
-        private readonly IMapper _mapper;
+        private readonly IContatoRepository _contatoRepository;
+        private readonly IEnderecoRepository _enderecoRepository;
 
-        public ClienteAppService(IClienteRepository repository, IMapper mapper)
+        public ClienteAppService(IClienteRepository repository, IContatoRepository contatoRepository, IEnderecoRepository enderecoRepository)
         {
             _repository = repository;
-            _mapper = mapper;
+            _contatoRepository = contatoRepository;
+            _enderecoRepository = enderecoRepository;
         }
 
-        public void Cadastrar(CadastrarClienteViewModel viewModel)
+        public void Atualizar(AtualizarClienteViewModel viewModel)
         {
-            var cliente = _mapper.Map<Cliente>(viewModel);
+            var cliente = _repository.ObterPorId(viewModel.Id);
+
+            if(!(viewModel.IdContato.HasValue && viewModel.IdEndereco.HasValue))
+                throw new Exception("Não foram informados dados a serem atualizados");
+
+            if (cliente == null)
+                throw new Exception("CLIENTE NÃO ENCONTRADO");
+
+            cliente.AlterarContato(viewModel.IdContato.Value);
+            cliente.AlterarEndereco(viewModel.IdEndereco.Value);
+
+            _repository.Atualizar(cliente);
+        }
+
+        public ClienteViewModel Cadastrar(CadastrarClienteViewModel viewModel)
+        {
+            var cliente = _repository.ObterPorFiltro(x => x.Cpf == viewModel.Cpf);
+
+            if (cliente != null) throw new Exception("Cliente ja existe. Nome: " + cliente.Nome);
+
+            cliente = Mapper.Map<Cliente>(viewModel);
 
             _repository.Incluir(cliente);
+
+            return Mapper.Map<ClienteViewModel>(cliente);
         }
 
         public ICollection<ClienteViewModel> Listar()
         {
-            var clientes = _repository.Listar().ToList();
+            var clientes = _repository.ListarClientes();
 
-            return _mapper.Map<ICollection<ClienteViewModel>>(clientes);
+            return Mapper.Map<ICollection<ClienteViewModel>>(clientes);
         }
 
         public ClienteComEnderecoViewModel ObterPorId(Guid id)
         {
-            var cliente = _repository.ObterPorId(id);
+            var cliente = _repository.ObterClientePorId(id);
 
-            return _mapper.Map<ClienteComEnderecoViewModel>(cliente);
+            return Mapper.Map<ClienteComEnderecoViewModel>(cliente);
         }
     }
 }

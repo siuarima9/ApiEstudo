@@ -1,7 +1,6 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using Application.ProvaDev.AutoMapper;
+using System;
 
 namespace Service.WebApi.ProvaDev.Configuration
 {
@@ -12,8 +11,6 @@ namespace Service.WebApi.ProvaDev.Configuration
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddAutoMapper();
-
-            AutoMapperConfiguration.RegisterMappings();
         }
     }
 }

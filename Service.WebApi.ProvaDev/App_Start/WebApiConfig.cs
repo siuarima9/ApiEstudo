@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.ProvaDev.AutoMapper;
+using AutoMapper;
+using Infra.ProvaDev.IoC;
 using Service.WebApi.ProvaDev.Configuration;
 using System.Web.Http;
 
@@ -9,7 +11,9 @@ namespace Service.WebApi.ProvaDev
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            (config.Services as IServiceCollection).AddAutoMapperSetup(); 
+            /*(config.Services as IServiceCollection).AddAutoMapperSetup();*/
+
+            //AutoMapperConfiguration.RegisterMappings().CreateMapper();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -20,5 +24,6 @@ namespace Service.WebApi.ProvaDev
                 defaults: new { id = RouteParameter.Optional }
             );
         }
+
     }
 }

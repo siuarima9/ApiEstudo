@@ -18,6 +18,6 @@ namespace Application.ProvaDev.ViewModels
 
         public string Rg { get; set; }
 
-        public EnderecoViewModel Contato { get; set; }
+        public EnderecoViewModel Endereco { get; set; }
     }
 }

@@ -4,19 +4,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.ProvaDev.Models
 {
-    [Table("Usuario")]
     public partial class Usuario
     {
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string nome { get; set; }
+        public string Nome { get; set; }
 
-        [Required]
-        [StringLength(80)]
-        public string senha { get; set; }
+        public string Senha { get; set; }
 
-        public bool ativo { get; set; }
+        public bool Ativo { get; set; }
     }
 }

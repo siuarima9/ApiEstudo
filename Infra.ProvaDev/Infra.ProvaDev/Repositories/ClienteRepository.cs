@@ -1,25 +1,45 @@
 ﻿using Domain.ProvaDev.Interfaces;
 using Domain.ProvaDev.Models;
-using System.Data.Entity;
+using Infra.ProvaDev.Context;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Infra.ProvaDev.Repositories
 {
     public class ClienteRepository : Repository<Cliente>, IClienteRepository
     {
-        private readonly Context.Context _context;
+        private readonly ProvaDevContext _context;
 
-        public ClienteRepository(Context.Context context) : base(context)
+        public ClienteRepository(ProvaDevContext context) : base(context)
         {
             _context = context;
         }
 
-        public new IQueryable<Cliente> Listar()
+        public ICollection<Cliente> ListarClientes()
         {
-            var clientes = _context.Clientes
-                            .Include(x => x.Contato);
+            var clientes = _context.Set<Cliente>().Include(x => x.Contato).ToList();
 
             return clientes;
+        }
+
+        public Cliente ObterClientePorId(Guid id)
+        {
+            var cliente = _context.Set<Cliente>()
+                            .Include(x => x.Endereco).ThenInclude(x => x.UnidadeFederativa)
+                            .Where(x => x.Id == id)
+                            .FirstOrDefault();
+
+            return cliente;
+        }
+
+        public Cliente ObterPorFiltro(Expression<Func<Cliente, bool>> predicate)
+        {
+            var cliente = _context.Set<Cliente>().Where(predicate).FirstOrDefault();
+
+            return cliente;
         }
     }
 }

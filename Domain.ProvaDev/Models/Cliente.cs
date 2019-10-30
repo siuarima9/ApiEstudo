@@ -1,36 +1,49 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.ProvaDev.Models
 {
-    [Table("Cliente")]
     public partial class Cliente
     {
-        public Guid id { get; set; }
+        public Cliente() { }
 
-        public int idContato { get; set; }
+        public Cliente(Guid id, int idContato, int idEndereco, string nome, string sobrenome, string cpf, string rg)
+        {
+            Id = id;
+            IdContato = idContato;
+            IdEndereco = idEndereco;
+            Nome = nome;
+            Sobrenome = sobrenome;
+            Cpf = cpf;
+            Rg = rg;
+        }
+               
+        public Guid Id { get; private set; }
 
-        public int idEndereco { get; set; }
+        public int IdContato { get; private set; }
 
-        [Required]
-        [StringLength(50)]
-        public string nome { get; set; }
+        public int IdEndereco { get; private set; }
 
-        [Required]
-        [StringLength(150)]
-        public string sobrenome { get; set; }
+        public string Nome { get; private set; }
 
-        [Required]
-        [StringLength(11)]
-        public string cpf { get; set; }
+        public string Sobrenome { get; private set; }
 
-        [Required]
-        [StringLength(15)]
-        public string rg { get; set; }
+        public string Cpf { get; private set; }
 
-        public virtual Contato Contato { get; set; }
+        public string Rg { get; private set; }
 
-        public virtual Endereco Endereco { get; set; }
+        public virtual Contato Contato { get; private set; }
+
+        public virtual Endereco Endereco { get; private set; }
+
+        public void AlterarEndereco(int idEndereco)
+        {
+            IdEndereco = idEndereco;
+        }
+
+        public void AlterarContato(int idContato)
+        {
+            IdContato = idContato;
+        }
     }
 }

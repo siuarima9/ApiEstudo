@@ -10,16 +10,17 @@ namespace Infra.ProvaDev.Repositories
     public class Repository<TEntity> : IRepository<Guid, TEntity>
         where TEntity : class
     {
-        private readonly Context.Context _context;
+        private readonly Context.ProvaDevContext _context;
 
-        public Repository(Context.Context context)
+        public Repository(Context.ProvaDevContext context)
         {
             _context = context;
         }
 
         public void Atualizar(TEntity obj)
         {
-            throw new NotImplementedException();
+            _context.Set<TEntity>().Update(obj);
+            _context.SaveChanges();
         }
 
         public void Incluir(TEntity obj)

@@ -13,6 +13,8 @@ namespace Application.ProvaDev.Interfaces
 
         ClienteComEnderecoViewModel ObterPorId(Guid id);
 
-        void Cadastrar(CadastrarClienteViewModel viewModel);
+        ClienteViewModel Cadastrar(CadastrarClienteViewModel viewModel);
+
+        void Atualizar(AtualizarClienteViewModel viewModel);
     }
 }

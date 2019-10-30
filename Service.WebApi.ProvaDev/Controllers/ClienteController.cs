@@ -1,6 +1,7 @@
 ﻿using Application.ProvaDev.Interfaces;
 using Application.ProvaDev.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace Service.WebApi.ProvaDev.Controllers
@@ -9,36 +10,64 @@ namespace Service.WebApi.ProvaDev.Controllers
     {
         private readonly IClienteAppService _appService;
 
+        //public ClienteController() { }
+
         public ClienteController(IClienteAppService appService)
         {
             _appService = appService;
         }
 
-        public IHttpActionResult Get()
+        public ICollection<ClienteViewModel> Get()
         {
             var clientes = _appService.Listar();
 
-            return Ok(clientes);
+            return clientes;
         }
 
-        public IHttpActionResult Get(Guid id)
+        public ClienteComEnderecoViewModel Get(Guid id)
         {
             var cliente = _appService.ObterPorId(id);
 
-            return Ok(cliente);
+            return cliente;
         }
 
-        public IHttpActionResult Post(CadastrarClienteViewModel viewModel)
+        public IHttpActionResult Post([FromBody] CadastrarClienteViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+                return BadRequest("Erro, campos não preenchidos corretamente");
+
             try
             {
-                _appService.Cadastrar(viewModel);
+                return Ok(_appService.Cadastrar(viewModel));
             } catch(Exception e)
             {
                 return BadRequest(e.Message);
             }
-
-            return Ok();
         }
+
+        public IHttpActionResult Put([FromBody] AtualizarClienteViewModel viewModel)
+        {
+            try
+            {
+                _appService.Atualizar(viewModel);
+                return Ok("Cliente atualizado com sucesso");
+            }catch(Exception e)
+            {
+                return BadRequest("Não foi possível atualizar o cliente. ERRO: \n" + e.Message);
+            }
+        }
+
+        //public IHttpActionResult Post(CadastrarClienteViewModel viewModel)
+        //{
+        //    try
+        //    {
+        //        _appService.Cadastrar(viewModel);
+        //    } catch(Exception e)
+        //    {
+        //        return BadRequest(e.Message);
+        //    }
+
+        //    return Ok();
+        //}
     }
 }

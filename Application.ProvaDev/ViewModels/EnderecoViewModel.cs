@@ -10,8 +10,6 @@ namespace Application.ProvaDev.ViewModels
     {
         public int Id { get; set; }
 
-        public int IdUnidadeFederativa { get; set; }
-
         public string Cep { get; set; }
 
         public string Cidade { get; set; }
@@ -24,6 +22,6 @@ namespace Application.ProvaDev.ViewModels
 
         public string Complemento { get; set; }
 
-        public UnidadeFederativaViewModel UF { get; set; }
+        public UnidadeFederativaViewModel UnidadeFederativa { get; set; }
     }
 }

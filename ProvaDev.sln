@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.ProvaDev", "App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.WebApi.ProvaDev", "Service.WebApi.ProvaDev\Service.WebApi.ProvaDev.csproj", "{04135BB3-4F7A-4879-B525-A9BB906434F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.ProvaDev", "Test.ProvaDev\Test.ProvaDev.csproj", "{C9514057-C6B5-4422-B90D-A63F5D86F337}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.ProvaDev", "Test.ProvaDev\Test.ProvaDev.csproj", "{C9514057-C6B5-4422-B90D-A63F5D86F337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.ProvaDev.IoC", "Infra.ProvaDev.IoC\Infra.ProvaDev.IoC.csproj", "{5D751CF7-F166-4ABB-A48D-B898BFBBC869}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C9514057-C6B5-4422-B90D-A63F5D86F337}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9514057-C6B5-4422-B90D-A63F5D86F337}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9514057-C6B5-4422-B90D-A63F5D86F337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D751CF7-F166-4ABB-A48D-B898BFBBC869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D751CF7-F166-4ABB-A48D-B898BFBBC869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D751CF7-F166-4ABB-A48D-B898BFBBC869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D751CF7-F166-4ABB-A48D-B898BFBBC869}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
