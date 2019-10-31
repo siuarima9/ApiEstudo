@@ -53,8 +53,10 @@ namespace Service.WebApi.ProvaDev.Controllers
             try
             {
                 var eventCliente = _appService.Atualizar(viewModel);
+
                 return Ok(eventCliente);
-            }catch(Exception e)
+            }
+            catch(Exception e)
             {
                 return BadRequest("Não foi possível atualizar o cliente. ERRO: \n" + e.Message);
             }

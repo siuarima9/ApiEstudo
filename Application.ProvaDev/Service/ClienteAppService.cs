@@ -14,14 +14,10 @@ namespace Application.ProvaDev.Service
     public class ClienteAppService : IClienteAppService
     {
         private readonly IClienteRepository _repository;
-        //private readonly IContatoRepository _contatoRepository;
-        //private readonly IEnderecoRepository _enderecoRepository;
 
-        public ClienteAppService(IClienteRepository repository/*, IContatoRepository contatoRepository, IEnderecoRepository enderecoRepository*/)
+        public ClienteAppService(IClienteRepository repository)
         {
             _repository = repository;
-            //_contatoRepository = contatoRepository;
-            //_enderecoRepository = enderecoRepository;
         }
 
         public AtualizarClienteEvent Atualizar(AtualizarClienteViewModel viewModel)

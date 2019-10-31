@@ -27,7 +27,7 @@ namespace Test.ProvaDev.ClienteTest
             var cliente = new Cliente(viewModelFake.Id, 0, 0, "alan", "guerra", "45645645678", "489456");
 
             _repository.Setup(x => x.ObterPorId(viewModelFake.Id)).Returns(cliente);
-            
+
             _appService.Atualizar(viewModelFake);
 
             _repository.Verify(x => x.Atualizar(It.IsAny<Cliente>()), Times.Once());
@@ -46,8 +46,8 @@ namespace Test.ProvaDev.ClienteTest
             _repository.Verify(x => x.Atualizar(It.IsAny<Cliente>()), Times.Never());
             Assert.Equal("Não foi informado dados para atualização", resultEvent.Mensagem);
             Assert.Equal(TipoDeMensagem.Falha, resultEvent.TipoDeMensagem);
-        }        
-        
+        }
+
         [Fact]
         public void ClienteTestFalhaClienteNaoEncontrado()
         {
