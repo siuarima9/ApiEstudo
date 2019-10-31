@@ -134,6 +134,8 @@
     <Compile Include="Mappings\UsuarioMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClienteRepository.cs" />
+    <Compile Include="Repositories\ContatoRepository.cs" />
+    <Compile Include="Repositories\EnderecoRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
   <ItemGroup>

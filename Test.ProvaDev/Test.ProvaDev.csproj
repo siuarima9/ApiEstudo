@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -18,7 +18,6 @@
     <ProjectReference Include="..\Application.ProvaDev\Application.ProvaDev.csproj" />
     <ProjectReference Include="..\Domain.ProvaDev\Domain.ProvaDev.csproj" />
     <ProjectReference Include="..\Infra.ProvaDev\Infra.ProvaDev\Infra.ProvaDev.csproj" />
-    <ProjectReference Include="..\Service.WebApi.ProvaDev\Service.WebApi.ProvaDev.csproj" />
   </ItemGroup>
 
 </Project>

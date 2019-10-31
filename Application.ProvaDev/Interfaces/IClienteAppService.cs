@@ -1,4 +1,5 @@
-﻿using Application.ProvaDev.ViewModels;
+﻿using Application.ProvaDev.Events;
+using Application.ProvaDev.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,6 @@ namespace Application.ProvaDev.Interfaces
 
         ClienteViewModel Cadastrar(CadastrarClienteViewModel viewModel);
 
-        void Atualizar(AtualizarClienteViewModel viewModel);
+        AtualizarClienteEvent Atualizar(AtualizarClienteViewModel viewModel);
     }
 }

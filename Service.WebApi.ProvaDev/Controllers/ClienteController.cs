@@ -47,10 +47,13 @@ namespace Service.WebApi.ProvaDev.Controllers
 
         public IHttpActionResult Put([FromBody] AtualizarClienteViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+                return BadRequest("Erro, necessário informar id do cliente");
+
             try
             {
-                _appService.Atualizar(viewModel);
-                return Ok("Cliente atualizado com sucesso");
+                var eventCliente = _appService.Atualizar(viewModel);
+                return Ok(eventCliente);
             }catch(Exception e)
             {
                 return BadRequest("Não foi possível atualizar o cliente. ERRO: \n" + e.Message);

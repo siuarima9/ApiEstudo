@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace Infra.ProvaDev.Repositories
 {
-    public class ClienteRepository : Repository<Cliente>, IClienteRepository
+    public class ClienteRepository : Repository<Guid, Cliente>, IClienteRepository
     {
         private readonly ProvaDevContext _context;
 

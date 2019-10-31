@@ -60,7 +60,10 @@
     <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="AutoMapper\DomainToViewModelMapping.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMapping.cs" />
+    <Compile Include="Enums\TipoDeMensagem.cs" />
+    <Compile Include="Events\AtualizarClienteEvent.cs" />
     <Compile Include="Service\ClienteAppService.cs" />
+    <Compile Include="ViewModels\AtualizarClienteViewModel.cs" />
     <Compile Include="ViewModels\CadastrarClienteViewModel.cs" />
     <Compile Include="ViewModels\ClienteComEnderecoViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />

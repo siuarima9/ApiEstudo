@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Infra.ProvaDev.Repositories
 {
-    public class Repository<TEntity> : IRepository<Guid, TEntity>
+    public class Repository<TKey, TEntity> : IRepository<TKey, TEntity>
+        where TKey : struct
         where TEntity : class
     {
         private readonly Context.ProvaDevContext _context;
@@ -17,7 +18,7 @@ namespace Infra.ProvaDev.Repositories
             _context = context;
         }
 
-        public void Atualizar(TEntity obj)
+        public virtual void Atualizar(TEntity obj)
         {
             _context.Set<TEntity>().Update(obj);
             _context.SaveChanges();
@@ -34,7 +35,7 @@ namespace Infra.ProvaDev.Repositories
             return _context.Set<TEntity>();
         }
 
-        public TEntity ObterPorId(Guid id)
+        public virtual TEntity ObterPorId(TKey id)
         {
             return _context.Set<TEntity>().Find(id);
         }

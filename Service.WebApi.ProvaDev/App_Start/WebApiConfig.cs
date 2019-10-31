@@ -1,8 +1,4 @@
-﻿using Application.ProvaDev.AutoMapper;
-using AutoMapper;
-using Infra.ProvaDev.IoC;
-using Service.WebApi.ProvaDev.Configuration;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace Service.WebApi.ProvaDev
 {

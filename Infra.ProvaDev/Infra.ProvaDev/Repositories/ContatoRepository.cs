@@ -5,7 +5,7 @@ using System;
 
 namespace Infra.ProvaDev.Repositories
 {
-    public class ContatoRepository : Repository<Contato>, IContatoRepository
+    public class ContatoRepository : Repository<int, Contato>, IContatoRepository
     {
         private ProvaDevContext _context;
 
@@ -14,9 +14,5 @@ namespace Infra.ProvaDev.Repositories
             _context = context;
         }
 
-        public Contato ObterPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

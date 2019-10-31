@@ -66,7 +66,7 @@ namespace Service.WebApi.ProvaDev
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            NativeInjectorBootStraper.RegisterServices(kernel);
+            NativeInjector.RegisterServices(kernel);
         }
     }
 }
