@@ -24,14 +24,17 @@ namespace Application.ProvaDev.Service
         {
             var cliente = _repository.ObterPorId(viewModel.Id);
 
-            if(!(viewModel.IdContato.HasValue && viewModel.IdEndereco.HasValue))
-                return new AtualizarClienteEvent(TipoDeMensagem.Falha, "Não foi informado dados para atualização");
-
             if (cliente == null)
                 return new AtualizarClienteEvent(TipoDeMensagem.Falha, "CLIENTE NÃO ENCONTRADO");
 
-            cliente.AlterarContato(viewModel.IdContato.Value);
-            cliente.AlterarEndereco(viewModel.IdEndereco.Value);
+            if(!viewModel.IdContato.HasValue && !viewModel.IdEndereco.HasValue)
+                return new AtualizarClienteEvent(TipoDeMensagem.Falha, "Não foi informado dados para atualização");
+
+            if(viewModel.IdContato.HasValue)
+                cliente.AlterarContato(viewModel.IdContato.Value);
+
+            if(viewModel.IdEndereco.HasValue)
+                cliente.AlterarEndereco(viewModel.IdEndereco.Value);
 
             _repository.Atualizar(cliente);
 
